@@ -10,6 +10,7 @@ from io import BytesIO
 import time
 import os
 
+# Initialize the web driver
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 driver.get("https://www.sothebysrealty.com/eng/sales/du-uae")
@@ -55,9 +56,9 @@ try:
                 bottom = img_height - (img_height // 5)
 
                 cropped_image = screenshot_image.crop((left, top, right, bottom))
-                property_folder = f'C:/Users/HP/Desktop/RealEstateImages/property_{property_index+1}'
+                property_folder = f'C:/Users/HP/Desktop/RealEstateImages/data/property_{property_index+1}'
                 os.makedirs(property_folder, exist_ok=True)
-                save_path = f'{property_folder}/cropped{i+1}.png'
+                save_path = f'{property_folder}/property_{property_index+1}cropped{i+1}.png'
                 cropped_image.save(save_path)
                 print(f"Image {i+1} of property {property_index+1} saved successfully at {save_path}.")
 
